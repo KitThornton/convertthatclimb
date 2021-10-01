@@ -1,9 +1,19 @@
-const Columns = [{
+import React from 'react';
+
+class Columns extends React.Component {
+    render() {
+        return (
+            { Columns2 }
+        )
+    }
+}
+
+const Columns2 = [{
     dataField: 'french',
     text: 'French',
     title: true,
     headerEvents: {
-        onClick: (e, column, columnIndex) => alert('Click on Product ID header column')
+        // onClick:() => App.setModalShow(true)
     },
     headerClasses: 'grading-system'
 }, {
