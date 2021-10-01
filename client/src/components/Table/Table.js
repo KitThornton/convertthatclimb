@@ -75,7 +75,10 @@ export default class Table extends React.Component {
         }, {
             dataField: 'yds',
             text: 'Yosemite Decimal System',
-            headerClasses: 'grading-system'
+            headerClasses: 'grading-system',
+            headerEvents: {
+                onClick: () => this.modalShow('uiaa')
+            },
         }, {
             dataField: 'britishtrad',
             text: 'British Trad',
@@ -127,7 +130,7 @@ export default class Table extends React.Component {
 }
 
 const rowClasses = ( row ) => {
-    let classes = null;
+    let classes;
 
     switch (row.level) {
         case 'novice':
