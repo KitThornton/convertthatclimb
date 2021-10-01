@@ -1,9 +1,7 @@
-import React from 'react';
+import React, {Fragment}  from 'react';
 import BootstrapTable from 'react-bootstrap-table-next';
 import ToolkitProvider, {Search} from 'react-bootstrap-table2-toolkit';
-import {Button} from "react-bootstrap";
 
-// import Columns from "./Columns";
 import ClimbingGrades from "./ClimbingGrades";
 import * as Descriptions from './GradingSystemsDescriptions'
 import GradingSystemModal from "./Modal";
@@ -50,7 +48,11 @@ export default class Table extends React.Component {
     }
 
     modalHide = () => {
-        this.setState({modalShow: false});
+        this.setState({
+            modalShow: false,
+            modalTitle: '',
+            modalBody: ''
+        });
     }
 
     render() {
@@ -86,7 +88,7 @@ export default class Table extends React.Component {
         ];
 
         return (
-            <div>
+            <Fragment>
                 <ToolkitProvider
                     keyField="australian"
                     data={ClimbingGrades}
@@ -105,6 +107,7 @@ export default class Table extends React.Component {
                                         hover
                                         striped
                                         condensed
+                                        rowClasses={rowClasses}
                                     />
                                 </div>
                             </div>
@@ -112,17 +115,36 @@ export default class Table extends React.Component {
                     }
                 </ToolkitProvider>
 
-                <Button variant="success" onClick={this.modalShow}>
-                    click me
-                </Button>
-
                 <GradingSystemModal
                     onHide={this.modalHide}
                     show={this.state.modalShow}
                     title={this.state.modalTitle}
                     body={this.state.modalBody}
                 />
-            </div>
+            </Fragment>
         )
     }
+}
+
+const rowClasses = ( row ) => {
+    let classes = null;
+
+    switch (row.level) {
+        case 'novice':
+            classes = 'novice'
+            break;
+        case 'beginner':
+            classes = 'beginner'
+            break;
+        case 'intermediate':
+            classes = 'intermediate'
+            break;
+        case 'advanced':
+            classes = 'advanced'
+            break;
+        default:
+            classes = ''
+    }
+
+    return classes;
 }

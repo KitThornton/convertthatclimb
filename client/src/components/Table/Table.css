@@ -1,3 +1,10 @@
 .grading-system:hover {
     cursor:help;
 }
+.novice {
+    background-color: aliceblue;
+}
+
+.beginner {
+    background-color: lightblue;
+}
