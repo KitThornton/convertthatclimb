@@ -17,7 +17,6 @@ export default function GradingSystemModal(props) {
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <h4>Centered Modal</h4>
                 <p>
                     {props.body}
                 </p>

@@ -3,8 +3,8 @@ import BootstrapTable from 'react-bootstrap-table-next';
 import ToolkitProvider, {Search} from 'react-bootstrap-table2-toolkit';
 
 import ClimbingGrades from "./ClimbingGrades";
-import * as Descriptions from './GradingSystemsDescriptions'
-import GradingSystemModal from "./Modal";
+import * as Descriptions from '../modal/GradingSystemsDescriptions'
+import GradingSystemModal from "../modal/Modal";
 import './Table.css'
 const {SearchBar} = Search;
 
@@ -38,6 +38,27 @@ export default class Table extends React.Component {
                     modalShow: true,
                     modalTitle: 'UIAA',
                     modalBody: Descriptions.UIAAModalBody
+                });
+                break;
+            case 'yds':
+                this.setState({
+                    modalShow: true,
+                    modalTitle: 'Yosemite Decimal System',
+                    modalBody: Descriptions.YDSModalBody
+                });
+                break;
+            case 'britishtrad':
+                this.setState({
+                    modalShow: true,
+                    modalTitle: 'British Traditional',
+                    modalBody: Descriptions.BritishTradModalBody
+                });
+                break;
+            case 'australian':
+                this.setState({
+                    modalShow: true,
+                    modalTitle: 'Australian',
+                    modalBody: Descriptions.AustralianModalBody
                 });
                 break;
             default:
@@ -77,16 +98,22 @@ export default class Table extends React.Component {
             text: 'Yosemite Decimal System',
             headerClasses: 'grading-system',
             headerEvents: {
-                onClick: () => this.modalShow('uiaa')
+                onClick: () => this.modalShow('yds')
             },
         }, {
             dataField: 'britishtrad',
             text: 'British Trad',
-            headerClasses: 'grading-system'
+            headerClasses: 'grading-system',
+            headerEvents: {
+                onClick: () => this.modalShow('britishtrad')
+            },
         }, {
             dataField: 'australian',
             text: 'Australian',
-            headerClasses: 'grading-system'
+            headerClasses: 'grading-system',
+            headerEvents: {
+                onClick: () => this.modalShow('australian')
+            },
         }
         ];
 
@@ -102,7 +129,12 @@ export default class Table extends React.Component {
                         props => (
                             <div>
                                 <div className='p-1'>
-                                    <SearchBar {...props.searchProps} />
+                                    <SearchBar
+                                        {...props.searchProps}
+                                        srText=""
+                                        placeholder={"Search for a grade..."}
+                                        delay={300}
+                                    />
                                 </div>
                                 <div className="p-1">
                                     <BootstrapTable

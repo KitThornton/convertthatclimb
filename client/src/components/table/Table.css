@@ -8,3 +8,9 @@
 .beginner {
     background-color: lightblue;
 }
+
+.search-label{
+    width: 250px;
+    float: left;
+    padding: 3px;
+}
