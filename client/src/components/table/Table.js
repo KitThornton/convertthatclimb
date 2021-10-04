@@ -7,6 +7,7 @@ import * as repositoryActions from '../../actions/repositoryActions';
 import * as Descriptions from '../modal/GradingSystemsDescriptions'
 import GradingSystemModal from "../modal/Modal";
 import './Table.css'
+import {GradingSystems} from "./Columns";
 
 const {SearchBar} = Search;
 
@@ -36,7 +37,7 @@ class Table extends React.Component {
 
         switch (e) {
             case 'french':
-                title = 'French';
+                title = 'French ss';
                 body = Descriptions.FrenchModalBody
                 break;
             case 'uiaa':
@@ -48,7 +49,7 @@ class Table extends React.Component {
                 body = Descriptions.YDSModalBody
                 break;
             case 'britishtrad':
-                title = 'Yosemite Decimal System';
+                title = 'British Traditional';
                 body = Descriptions.BritishTradModalBody;
                 break;
             case 'australian':
@@ -74,51 +75,18 @@ class Table extends React.Component {
 
     render() {
 
-        const Columns2 = [{
-            dataField: 'french',
-            text: 'French',
-            title: true,
-            headerEvents: {
-                onClick: () => this.modalShow('french')
-            },
+        const columns = GradingSystems.map(item => ({...item,
+            headerEvents: {onClick: () => this.modalShow(item.dataField)},
             headerClasses: 'grading-system'
-        }, {
-            dataField: 'uiaa',
-            text: 'UIAA',
-            headerEvents: {
-                onClick: () => this.modalShow('uiaa')
-            },
-            headerClasses: 'grading-system'
-        }, {
-            dataField: 'yds',
-            text: 'Yosemite Decimal System',
-            headerClasses: 'grading-system',
-            headerEvents: {
-                onClick: () => this.modalShow('yds')
-            },
-        }, {
-            dataField: 'britishtrad',
-            text: 'British Trad',
-            headerClasses: 'grading-system',
-            headerEvents: {
-                onClick: () => this.modalShow('britishtrad')
-            },
-        }, {
-            dataField: 'australian',
-            text: 'Australian',
-            headerClasses: 'grading-system',
-            headerEvents: {
-                onClick: () => this.modalShow('australian')
-            },
-        }
-        ];
+            })
+        )
 
         return (
             <Fragment>
                 <ToolkitProvider
                     keyField="australian"
                     data={this.props.grades}
-                    columns={Columns2}
+                    columns={columns}
                     search
                 >
                     {
@@ -129,7 +97,7 @@ class Table extends React.Component {
                                         {...props.searchProps}
                                         srText=""
                                         placeholder={"Search for a grade..."}
-                                        delay={300}
+                                        delay={200}
                                     />
                                 </div>
                                 <div className="p-1">
@@ -157,28 +125,7 @@ class Table extends React.Component {
     }
 }
 
-const rowClasses = ( row ) => {
-    let classes;
-
-    switch (row.level) {
-        case 'novice':
-            classes = 'novice'
-            break;
-        case 'beginner':
-            classes = 'beginner'
-            break;
-        case 'intermediate':
-            classes = 'intermediate'
-            break;
-        case 'advanced':
-            classes = 'advanced'
-            break;
-        default:
-            classes = ''
-    }
-
-    return classes;
-}
+const rowClasses = ( row ) => { return row.level }
 
 const mapStateToProps = (state) => {
     return {
@@ -191,7 +138,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
     onGetClimbingGrades: () => dispatch(repositoryActions.getClimbingGrades()),
-    onUpdateModal: (props) => dispatch(repositoryActions.toggleModalVisibility(props))
+    onUpdateModal: (props) => dispatch(repositoryActions.updateModal(props))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Table)

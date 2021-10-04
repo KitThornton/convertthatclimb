@@ -1,38 +1,17 @@
-import React from 'react';
-
-class Columns extends React.Component {
-    render() {
-        return (
-            { Columns2 }
-        )
-    }
-}
-
-const Columns2 = [{
+export const GradingSystems = [{
     dataField: 'french',
-    text: 'French',
-    title: true,
-    headerEvents: {
-        // onClick:() => App.setModalShow(true)
-    },
-    headerClasses: 'grading-system'
+    text: 'French'
 }, {
     dataField: 'uiaa',
-    text: 'UIAA',
-    headerClasses: 'grading-system'
+    text: 'UIAA'
 }, {
     dataField: 'yds',
-    text: 'Yosemite Decimal System',
-    headerClasses: 'grading-system'
+    text: 'Yosemite Decimal System'
 }, {
     dataField: 'britishtrad',
-    text: 'British Trad',
-    headerClasses: 'grading-system'
+    text: 'British Trad'
 }, {
     dataField: 'australian',
-    text: 'Australian',
-    headerClasses: 'grading-system'
+    text: 'Australian'
 }
 ];
-
-export default Columns

@@ -14,7 +14,7 @@ const executeGetClimbingGradesSuccess = (state, action) => {
     }
 }
 
-const executeToggleModalVisibilitySuccess = (state, action) => {
+const executeUpdateModalSuccess = (state, action) => {
     return {
         ...state,
         modalShow: action.data.modalShow,
@@ -27,8 +27,8 @@ const reducer = (state = initialState, action) => {
     switch (action.type) {
         case ActionTypes.GET_CLIMBING_GRADES:
             return executeGetClimbingGradesSuccess(state, action)
-        case ActionTypes.TOGGLE_MODAL_VISIBILITY:
-            return executeToggleModalVisibilitySuccess(state, action)
+        case ActionTypes.UPDATE_MODAL:
+            return executeUpdateModalSuccess(state, action)
         default:
             return state;
     }

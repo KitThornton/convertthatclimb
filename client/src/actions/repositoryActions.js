@@ -8,9 +8,9 @@ const submitGetClimbingGradesSuccess = (data) => {
     }
 }
 
-const submitToggleModalVisibilitySuccess = (data)  => {
+const submitUpdateModalSuccess = (data)  => {
     return {
-        type: ActionTypes.TOGGLE_MODAL_VISIBILITY,
+        type: ActionTypes.UPDATE_MODAL,
         data: data
     }
 }
@@ -30,11 +30,9 @@ export const getClimbingGrades = () => {
     }
 }
 
-export const toggleModalVisibility = (props) => {
-
-    const { modalShow, title, body } = props;
+export const updateModal = (props) => {
 
     return (dispatch) => {
-        dispatch(submitToggleModalVisibilitySuccess(props))
+        dispatch(submitUpdateModalSuccess(props))
     }
 }
