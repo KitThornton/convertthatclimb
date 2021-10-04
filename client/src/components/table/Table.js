@@ -1,25 +1,32 @@
 import React, {Fragment}  from 'react';
 import BootstrapTable from 'react-bootstrap-table-next';
 import ToolkitProvider, {Search} from 'react-bootstrap-table2-toolkit';
+import {connect} from "react-redux";
 
-import ClimbingGrades from "./ClimbingGrades";
+import * as repositoryActions from '../../actions/repositoryActions';
 import * as Descriptions from '../modal/GradingSystemsDescriptions'
 import GradingSystemModal from "../modal/Modal";
 import './Table.css'
+
 const {SearchBar} = Search;
 
-export default class Table extends React.Component {
+class Table extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
             modalShow: false,
             modalTitle: '',
-            modalBody: ''
+            modalBody: '',
+            grades: []
         }
 
         this.modalShow = this.modalShow.bind();
         this.modalHide = this.modalHide.bind();
+    }
+
+    componentDidMount() {
+        this.props.onGetClimbingGrades();
     }
 
     modalShow = (e) => {
@@ -121,7 +128,7 @@ export default class Table extends React.Component {
             <Fragment>
                 <ToolkitProvider
                     keyField="australian"
-                    data={ClimbingGrades}
+                    data={this.props.grades}
                     columns={Columns2}
                     search
                 >
@@ -183,3 +190,18 @@ const rowClasses = ( row ) => {
 
     return classes;
 }
+
+const mapStateToProps = (state) => {
+    return {
+        modalShow: state.modalShow,
+        modalTitle: state.modalTitle,
+        modalBody: state.modalBody,
+        grades: state.grades
+    }
+}
+
+const mapDispatchToProps = (dispatch) => ({
+    onGetClimbingGrades: () => dispatch(repositoryActions.getClimbingGrades())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Table)
