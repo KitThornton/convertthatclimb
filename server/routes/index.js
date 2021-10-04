@@ -17,6 +17,21 @@ router.get('/climbingGrades', async function(req, res) {
 })
 
 // GET all the expertise levels
+router.get('/', async function(req, res) {
+  try {
+    const q = 'SELECT * FROM dbo.ExpertiseLevel';
+    const todos = await pool.query(q)
+    // const test = JSON.parse(todos)
+    // res.send(test);
+    res.json(todos);
+    console.log("Retrieved all items from dbo.Grades")
+
+  } catch (err) {
+    console.error(err.message);
+  }
+})
+
+// GET all the expertise levels
 router.get('/expertiseLevel', async function(req, res) {
   try {
     const q = 'SELECT * FROM dbo.ExpertiseLevel';
