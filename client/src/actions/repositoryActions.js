@@ -1,5 +1,4 @@
 import * as ActionTypes from './actionTypes'
-import {hasExpectedRequestMetadata} from "@reduxjs/toolkit/dist/matchers";
 const baseUrl = 'https://convertthatclimb.herokuapp.com/';
 
 const submitGetClimbingGradesSuccess = (data) => {
@@ -9,12 +8,12 @@ const submitGetClimbingGradesSuccess = (data) => {
     }
 }
 
-const submitToggleModalVisibilitySuccess = (hasExpectedRequestMetadata  => {
+const submitToggleModalVisibilitySuccess = (data)  => {
     return {
         type: ActionTypes.TOGGLE_MODAL_VISIBILITY,
         data: data
     }
-})
+}
 
 export const getClimbingGrades = () => {
     return (dispatch) => {
@@ -31,8 +30,11 @@ export const getClimbingGrades = () => {
     }
 }
 
-export const toggleModalVisibility = (target) => {
+export const toggleModalVisibility = (props) => {
+
+    const { modalShow, title, body } = props;
+
     return (dispatch) => {
-        dispatch(submitToggleModalVisibilitySuccess(target))
+        dispatch(submitToggleModalVisibilitySuccess(props))
     }
 }

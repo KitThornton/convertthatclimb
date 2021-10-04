@@ -32,51 +32,40 @@ class Table extends React.Component {
     modalShow = (e) => {
 
         // switch case on where the click is originating
+        let title, body;
+
         switch (e) {
             case 'french':
-                this.setState({
-                    modalShow: true,
-                    modalTitle: 'French',
-                    modalBody: Descriptions.FrenchModalBody
-                });
+                title = 'French';
+                body = Descriptions.FrenchModalBody
                 break;
             case 'uiaa':
-                this.setState({
-                    modalShow: true,
-                    modalTitle: 'UIAA',
-                    modalBody: Descriptions.UIAAModalBody
-                });
+                title = 'UIAA';
+                body = Descriptions.UIAAModalBody
                 break;
             case 'yds':
-                this.setState({
-                    modalShow: true,
-                    modalTitle: 'Yosemite Decimal System',
-                    modalBody: Descriptions.YDSModalBody
-                });
+                title = 'Yosemite Decimal System';
+                body = Descriptions.YDSModalBody
                 break;
             case 'britishtrad':
-                this.setState({
-                    modalShow: true,
-                    modalTitle: 'British Traditional',
-                    modalBody: Descriptions.BritishTradModalBody
-                });
+                title = 'Yosemite Decimal System';
+                body = Descriptions.BritishTradModalBody;
                 break;
             case 'australian':
-                this.setState({
-                    modalShow: true,
-                    modalTitle: 'Australian',
-                    modalBody: Descriptions.AustralianModalBody
-                });
+                    title = 'Australian';
+                    body = Descriptions.AustralianModalBody;
                 break;
-            default:
-                this.setState({
-                    modalShow: false
-                })
         }
+
+        this.props.onUpdateModal({
+            modalShow: true,
+            modalTitle: title,
+            modalBody: body
+        })
     }
 
     modalHide = () => {
-        this.setState({
+        this.props.onUpdateModal({
             modalShow: false,
             modalTitle: '',
             modalBody: ''
@@ -159,9 +148,9 @@ class Table extends React.Component {
 
                 <GradingSystemModal
                     onHide={this.modalHide}
-                    show={this.state.modalShow}
-                    title={this.state.modalTitle}
-                    body={this.state.modalBody}
+                    show={this.props.modalShow}
+                    title={this.props.modalTitle}
+                    body={this.props.modalBody}
                 />
             </Fragment>
         )
@@ -201,7 +190,8 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    onGetClimbingGrades: () => dispatch(repositoryActions.getClimbingGrades())
+    onGetClimbingGrades: () => dispatch(repositoryActions.getClimbingGrades()),
+    onUpdateModal: (props) => dispatch(repositoryActions.toggleModalVisibility(props))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Table)

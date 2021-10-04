@@ -17,7 +17,9 @@ const executeGetClimbingGradesSuccess = (state, action) => {
 const executeToggleModalVisibilitySuccess = (state, action) => {
     return {
         ...state,
-        modalShow: action.data
+        modalShow: action.data.modalShow,
+        modalTitle: action.data.modalTitle,
+        modalBody: action.data.modalBody
     }
 }
 
