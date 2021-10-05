@@ -4,6 +4,7 @@ import logo from './img/climbingLogo.jpg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Table from "./components/table/Table";
 import './App.css';
+import Legend from "./components/legend/Legend";
 
 function App() {
     return (
@@ -18,8 +19,10 @@ function App() {
                     </Col>
                 </Row>
             </div>
-            <body className="App-body">
-                <Table/>
+            <body className="App-body p-2">
+            {/*<div>*/}
+                <Table />
+            {/*</div>*/}
             </body>
         </Container>
     );

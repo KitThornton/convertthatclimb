@@ -8,6 +8,8 @@ import * as Descriptions from '../modal/GradingSystemsDescriptions'
 import GradingSystemModal from "../modal/Modal";
 import './Table.css'
 import {GradingSystems} from "./Columns";
+import Legend from "../legend/Legend";
+import {Row, Col} from "react-bootstrap";
 
 const {SearchBar} = Search;
 
@@ -53,9 +55,11 @@ class Table extends React.Component {
                 body = Descriptions.BritishTradModalBody;
                 break;
             case 'australian':
-                    title = 'Australian';
-                    body = Descriptions.AustralianModalBody;
+                title = 'Australian';
+                body = Descriptions.AustralianModalBody;
                 break;
+            default:
+                return;
         }
 
         this.props.onUpdateModal({
@@ -84,7 +88,7 @@ class Table extends React.Component {
         return (
             <Fragment>
                 <ToolkitProvider
-                    keyField="australian"
+                    keyField="level"
                     data={this.props.grades}
                     columns={columns}
                     search
@@ -92,14 +96,19 @@ class Table extends React.Component {
                     {
                         props => (
                             <div>
-                                <div className='p-1'>
-                                    <SearchBar
-                                        {...props.searchProps}
-                                        srText=""
-                                        placeholder={"Search for a grade..."}
-                                        delay={200}
-                                    />
-                                </div>
+                                <Row>
+                                    <Col>
+                                        <SearchBar
+                                            {...props.searchProps}
+                                            srText=""
+                                            placeholder={"Search for a grade..."}
+                                            delay={200}
+                                        />
+                                    </Col>
+                                    <Col>
+                                        <Legend />
+                                    </Col>
+                                </Row>
                                 <div className="p-1">
                                     <BootstrapTable
                                         {...props.baseProps}
@@ -125,7 +134,7 @@ class Table extends React.Component {
     }
 }
 
-const rowClasses = ( row ) => { return row.level }
+const rowClasses = ( row ) => { return row.expertise }
 
 const mapStateToProps = (state) => {
     return {

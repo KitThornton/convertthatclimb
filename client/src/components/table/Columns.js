@@ -10,7 +10,7 @@ export const GradingSystems = [{
 }, {
     dataField: 'britishtrad',
     text: 'British Trad'
-}, {
+ }, {
     dataField: 'australian',
     text: 'Australian'
 }
