@@ -10,6 +10,7 @@ import './Table.css'
 import {GradingSystems} from "./Columns";
 import Legend from "../legend/Legend";
 import {Row, Col} from "react-bootstrap";
+import StyleToggleButton from "../styleToggleButton/StyleToggleButton";
 
 const {SearchBar} = Search;
 
@@ -85,6 +86,11 @@ class Table extends React.Component {
             })
         )
 
+        const radios = [
+            { name: 'Route Climbing', value: 'routeclimbing' },
+            { name: 'Bouldering', value: 'bouldering' },
+        ];
+
         return (
             <Fragment>
                 <ToolkitProvider
@@ -97,15 +103,18 @@ class Table extends React.Component {
                         props => (
                             <div>
                                 <Row>
-                                    <Col>
+                                    <Col sm={3}>
                                         <SearchBar
                                             {...props.searchProps}
                                             srText=""
                                             placeholder={"Search for a grade..."}
-                                            delay={200}
+                                            delay={100}
                                         />
                                     </Col>
-                                    <Col>
+                                    <Col sm={4}>
+                                        <StyleToggleButton radios={radios} defaultValue={'routeclimbing'} />
+                                    </Col>
+                                    <Col sm={5}>
                                         <Legend />
                                     </Col>
                                 </Row>

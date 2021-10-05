@@ -1,0 +1,7 @@
+.radio input {
+    visibility: hidden;
+}
+.radio {
+    text-align: center;
+    /*width: 250px;*/
+}
