@@ -1,16 +1,16 @@
-import React, {Fragment}  from 'react';
+import React, {Fragment} from 'react';
 import BootstrapTable from 'react-bootstrap-table-next';
 import ToolkitProvider, {Search} from 'react-bootstrap-table2-toolkit';
 import {connect} from "react-redux";
+import {Row, Col} from "react-bootstrap";
 
 import * as repositoryActions from '../../actions/repositoryActions';
 import * as Descriptions from '../modal/GradingSystemsDescriptions'
 import GradingSystemModal from "../modal/Modal";
-import './Table.css'
 import {GradingSystems} from "./Columns";
 import Legend from "../legend/Legend";
-import {Row, Col} from "react-bootstrap";
 import StyleToggleButton from "../styleToggleButton/StyleToggleButton";
+import './Table.css'
 
 const {SearchBar} = Search;
 
@@ -33,30 +33,25 @@ class Table extends React.Component {
         this.props.onGetClimbingGrades();
     }
 
-    modalShow = (e) => {
+    modalShow = (system, title) => {
 
         // switch case on where the click is originating
-        let title, body;
+        let body;
 
-        switch (e) {
+        switch (system) {
             case 'french':
-                title = 'French ss';
                 body = Descriptions.FrenchModalBody
                 break;
             case 'uiaa':
-                title = 'UIAA';
                 body = Descriptions.UIAAModalBody
                 break;
             case 'yds':
-                title = 'Yosemite Decimal System';
                 body = Descriptions.YDSModalBody
                 break;
             case 'britishtrad':
-                title = 'British Traditional';
                 body = Descriptions.BritishTradModalBody;
                 break;
             case 'australian':
-                title = 'Australian';
                 body = Descriptions.AustralianModalBody;
                 break;
             default:
@@ -80,15 +75,16 @@ class Table extends React.Component {
 
     render() {
 
-        const columns = GradingSystems.map(item => ({...item,
-            headerEvents: {onClick: () => this.modalShow(item.dataField)},
-            headerClasses: 'grading-system'
+        const columns = GradingSystems.map(item => ({
+                ...item,
+                headerEvents: {onClick: () => this.modalShow(item.dataField, item.text)},
+                headerClasses: 'grading-system'
             })
         )
 
         const radios = [
-            { name: 'Route Climbing', value: 'routeclimbing' },
-            { name: 'Bouldering', value: 'bouldering' },
+            {name: 'Route Climbing', value: 'routeclimbing'},
+            {name: 'Bouldering', value: 'bouldering'},
         ];
 
         return (
@@ -112,10 +108,10 @@ class Table extends React.Component {
                                         />
                                     </Col>
                                     <Col sm={4}>
-                                        <StyleToggleButton radios={radios} defaultValue={'routeclimbing'} />
+                                        <StyleToggleButton radios={radios} defaultValue={'routeclimbing'}/>
                                     </Col>
                                     <Col sm={5}>
-                                        <Legend />
+                                        <Legend/>
                                     </Col>
                                 </Row>
                                 <div className="p-1">
@@ -143,7 +139,9 @@ class Table extends React.Component {
     }
 }
 
-const rowClasses = ( row ) => { return row.expertise }
+const rowClasses = (row) => {
+    return row.expertise
+}
 
 const mapStateToProps = (state) => {
     return {

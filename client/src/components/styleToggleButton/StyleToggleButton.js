@@ -9,13 +9,13 @@ class StyleToggleButton extends React.Component {
                 {this.props.radios.map((radio) => (
                     <ToggleButton
                         id={`radio-${radio.name}`}
-                        variant= {radio.checked ? 'secondary' : 'outline-secondary'}
+                        variant={radio.checked ? 'secondary' : 'outline-secondary'}
                         value={radio.value}
                         // checked={radioValue === radio.value}
                         // onChange={(e) => setRadioValue(e.currentTarget.value)}
                         className="radio"
                     >
-                        {radio.name}
+                        {radio.name} <span style={{display: 'inline-block', width: '12px'}}/>
                     </ToggleButton>
                 ))}
             </ToggleButtonGroup>

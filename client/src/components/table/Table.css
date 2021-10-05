@@ -12,10 +12,5 @@
 .search-label{
     width: 250px;
     float: left;
-    padding: 3px;
-}
-
-.radio input {
-    visibility: hidden;
-    text-align: center;
+    /*padding: 3px;*/
 }

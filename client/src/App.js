@@ -18,7 +18,7 @@ function App() {
                     </Col>
                 </Row>
             </div>
-            <body className="App-body p-2">
+            <body className="App-body p-3">
                 <Table />
             </body>
         </Container>
