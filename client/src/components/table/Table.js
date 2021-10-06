@@ -22,7 +22,8 @@ class Table extends React.Component {
             modalShow: false,
             modalTitle: '',
             modalBody: '',
-            grades: []
+            grades: [],
+            discipline: ''
         }
 
         this.modalShow = this.modalShow.bind();
@@ -30,7 +31,8 @@ class Table extends React.Component {
     }
 
     componentDidMount() {
-        this.props.onGetClimbingGrades();
+        this.props.onUpdateClimbingDiscipline(this.state.discipline)
+        this.props.onGetClimbingGrades(this.state.discipline);
     }
 
     modalShow = (system, title) => {
@@ -83,7 +85,7 @@ class Table extends React.Component {
         )
 
         const radios = [
-            {name: 'Route Climbing', value: 'routeclimbing'},
+            {name: 'Route Climbing', value: 'routeClimbing'},
             {name: 'Bouldering', value: 'bouldering'},
         ];
 
@@ -99,7 +101,7 @@ class Table extends React.Component {
                         props => (
                             <div>
                                 <Row>
-                                    <Col sm={3}>
+                                    <Col xs={12} md={3}>
                                         <SearchBar
                                             {...props.searchProps}
                                             srText=""
@@ -107,10 +109,13 @@ class Table extends React.Component {
                                             delay={100}
                                         />
                                     </Col>
-                                    <Col sm={4}>
-                                        <StyleToggleButton radios={radios} defaultValue={'routeclimbing'}/>
+                                    <Col xs={12} md={4}>
+                                        <StyleToggleButton
+                                            radios={radios}
+                                            defaultValue={"routeClimbing"}
+                                        />
                                     </Col>
-                                    <Col sm={5}>
+                                    <Col xs={12} md={5}>
                                         <Legend/>
                                     </Col>
                                 </Row>
@@ -148,13 +153,15 @@ const mapStateToProps = (state) => {
         modalShow: state.modalShow,
         modalTitle: state.modalTitle,
         modalBody: state.modalBody,
-        grades: state.grades
+        grades: state.grades,
+        discipline: state.discipline
     }
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    onGetClimbingGrades: () => dispatch(repositoryActions.getClimbingGrades()),
-    onUpdateModal: (props) => dispatch(repositoryActions.updateModal(props))
+    onGetClimbingGrades: (discipline) => dispatch(repositoryActions.getClimbingGrades(discipline)),
+    onUpdateModal: (props) => dispatch(repositoryActions.updateModal(props)),
+    onUpdateClimbingDiscipline: (discipline) => dispatch(repositoryActions.updateClimbingDiscipline(discipline))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Table)

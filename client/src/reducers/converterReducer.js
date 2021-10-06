@@ -4,7 +4,8 @@ const initialState = {
     modalShow: false,
     modalTitle: '',
     modalBody: '',
-    grades: []
+    grades: [],
+    discipline: 'routeClimbing'
 }
 
 const executeGetClimbingGradesSuccess = (state, action) => {
@@ -23,12 +24,21 @@ const executeUpdateModalSuccess = (state, action) => {
     }
 }
 
+const executeUpdateDiscipline = (state, action) => {
+    return {
+        ...state,
+        discipline: action.data,
+    }
+}
+
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case ActionTypes.GET_CLIMBING_GRADES:
             return executeGetClimbingGradesSuccess(state, action)
         case ActionTypes.UPDATE_MODAL:
             return executeUpdateModalSuccess(state, action)
+        case ActionTypes.UPDATE_DISCIPLINE:
+            return executeUpdateDiscipline(state, action)
         default:
             return state;
     }

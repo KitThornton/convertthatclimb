@@ -2,6 +2,11 @@
     visibility: hidden;
 }
 .radio {
-    text-align: center;
+    /*font-size: calc(10px + vmin);*/
+    /*text-align: center;*/
+    align-self: start;
+    /*align-items: baseline;*/
+    justify-content: center;
     /*width: 250px;*/
+    /*max-height: 40px;*/
 }

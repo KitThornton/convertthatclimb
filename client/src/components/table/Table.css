@@ -2,15 +2,24 @@
     cursor:help;
 }
 .novice {
-    background-color: aliceblue;
+    background-color: #F1EEF6;
 }
-
 .beginner {
-    background-color: lightblue;
+    background-color: #BDC9E1;
 }
+.intermediate {
 
+}
+.advanced {
+
+}
+.expert {
+
+}
+.elite {
+
+}
 .search-label{
     width: 250px;
     float: left;
-    /*padding: 3px;*/
 }

@@ -15,10 +15,20 @@ const submitUpdateModalSuccess = (data)  => {
     }
 }
 
-export const getClimbingGrades = () => {
+const submitUpdateClimbingDiscipline = (data)  => {
+    return {
+        type: ActionTypes.UPDATE_DISCIPLINE,
+        data: data
+    }
+}
+
+export const getClimbingGrades = (discipline) => {
+
+    // const {discipline} = props;
+
     return (dispatch) => {
 
-        fetch(baseUrl + 'climbingGrades')
+        fetch(baseUrl + 'grades' + '/' + discipline)
             .then(res => res.json())
             .then(
                 (result) => {
@@ -35,6 +45,13 @@ export const updateModal = (props) => {
 
     return (dispatch) => {
         dispatch(submitUpdateModalSuccess(props))
+    }
+}
+
+export const updateClimbingDiscipline = (discipline) => {
+
+    return (dispatch) => {
+        dispatch(submitUpdateClimbingDiscipline(discipline))
     }
 }
 
