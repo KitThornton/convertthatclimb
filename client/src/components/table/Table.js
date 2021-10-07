@@ -23,7 +23,7 @@ class Table extends React.Component {
             modalTitle: '',
             modalBody: '',
             grades: [],
-            discipline: ''
+            discipline: 'routeClimbing'
         }
 
         this.modalShow = this.modalShow.bind();

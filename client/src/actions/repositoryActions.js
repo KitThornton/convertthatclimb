@@ -28,7 +28,7 @@ export const getClimbingGrades = (discipline) => {
 
     return (dispatch) => {
 
-        fetch(baseUrl + 'grades' + '/' + discipline)
+        fetch(baseUrl + 'grades/' + discipline)
             .then(res => res.json())
             .then(
                 (result) => {
@@ -58,11 +58,21 @@ export const updateClimbingDiscipline = (discipline) => {
 // Refactor the array so that the grades are grouped by level with the
 // grading systems as properties and values as the descriptions
 const refactorArray = (rows) => {
+
     let response = [{}];
+
+    if (rows === undefined) {
+        return response;
+    }
 
     rows.map(item =>
     {
         const index = item.level - 1;
+
+        if (response[index] === undefined) {
+            response.push({});
+        }
+
         response[index][item.name] = item.description
         response[index]["level"] = item.level
         response[index]["expertise"] = item.expertisedescription

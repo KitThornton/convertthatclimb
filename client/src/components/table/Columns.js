@@ -10,7 +10,10 @@ export const GradingSystems = [{
 }, {
     dataField: 'britishtrad',
     text: 'British Trad'
- }, {
+}, {
+    dataField: 'britishtechnical',
+    text: 'British Technical'
+}, {
     dataField: 'australian',
     text: 'Australian'
 }
