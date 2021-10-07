@@ -1,4 +1,4 @@
-export const GradingSystems = [{
+export const RouteGradingSystems = [{
     dataField: 'french',
     text: 'French'
 }, {
@@ -16,5 +16,17 @@ export const GradingSystems = [{
 }, {
     dataField: 'australian',
     text: 'Australian'
+}
+];
+
+export const BoulderingGradingSystems = [{
+    dataField: 'font',
+    text: 'Font Grade'
+}, {
+    dataField: 'v',
+    text: 'V Grade'
+}, {
+    dataField: 'britishtechnical',
+    text: 'British Technical Grade'
 }
 ];

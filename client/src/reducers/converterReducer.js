@@ -5,7 +5,8 @@ const initialState = {
     modalTitle: '',
     modalBody: '',
     grades: [],
-    discipline: 'routeClimbing'
+    discipline: 'routeClimbing',
+    columns: [{}]
 }
 
 const executeGetClimbingGradesSuccess = (state, action) => {
@@ -27,7 +28,8 @@ const executeUpdateModalSuccess = (state, action) => {
 const executeUpdateDiscipline = (state, action) => {
     return {
         ...state,
-        discipline: action.data,
+        discipline: action.data.discipline,
+        columns: action.data.columns
     }
 }
 

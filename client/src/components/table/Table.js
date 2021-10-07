@@ -7,7 +7,7 @@ import {Row, Col} from "react-bootstrap";
 import * as repositoryActions from '../../actions/repositoryActions';
 import * as Descriptions from '../modal/GradingSystemsDescriptions'
 import GradingSystemModal from "../modal/Modal";
-import {GradingSystems} from "./Columns";
+import {RouteGradingSystems} from "./Columns";
 import Legend from "../legend/Legend";
 import StyleToggleButton from "../styleToggleButton/StyleToggleButton";
 import './Table.css'
@@ -18,21 +18,21 @@ class Table extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            modalShow: false,
-            modalTitle: '',
-            modalBody: '',
-            grades: [],
-            discipline: 'routeClimbing'
-        }
+        // this.state = {
+        //     modalShow: false,
+        //     modalTitle: '',
+        //     modalBody: '',
+        //     grades: [],
+        //     discipline: ''
+        // }
 
         this.modalShow = this.modalShow.bind();
         this.modalHide = this.modalHide.bind();
     }
 
     componentDidMount() {
-        this.props.onUpdateClimbingDiscipline(this.state.discipline)
-        this.props.onGetClimbingGrades(this.state.discipline);
+        this.props.onUpdateClimbingDiscipline('routeClimbing')
+        this.props.onGetClimbingGrades(this.props.discipline);
     }
 
     modalShow = (system, title) => {
@@ -77,7 +77,7 @@ class Table extends React.Component {
 
     render() {
 
-        const columns = GradingSystems.map(item => ({
+        const columns = this.props.columns.map(item => ({
                 ...item,
                 headerEvents: {onClick: () => this.modalShow(item.dataField, item.text)},
                 headerClasses: 'grading-system'
@@ -154,7 +154,8 @@ const mapStateToProps = (state) => {
         modalTitle: state.modalTitle,
         modalBody: state.modalBody,
         grades: state.grades,
-        discipline: state.discipline
+        discipline: state.discipline,
+        columns: state.columns
     }
 }
 

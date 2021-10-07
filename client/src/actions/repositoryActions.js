@@ -1,4 +1,5 @@
 import * as ActionTypes from './actionTypes'
+import {BoulderingGradingSystems, RouteGradingSystems} from "../components/table/Columns";
 const baseUrl = 'https://convertthatclimb.herokuapp.com/';
 
 const submitGetClimbingGradesSuccess = (data) => {
@@ -24,8 +25,6 @@ const submitUpdateClimbingDiscipline = (data)  => {
 
 export const getClimbingGrades = (discipline) => {
 
-    // const {discipline} = props;
-
     return (dispatch) => {
 
         fetch(baseUrl + 'grades/' + discipline)
@@ -50,8 +49,25 @@ export const updateModal = (props) => {
 
 export const updateClimbingDiscipline = (discipline) => {
 
+    let columns;
+    let data = {};
+
+    switch (discipline) {
+        case 'routeClimbing':
+            columns = RouteGradingSystems;
+            break;
+        case 'bouldering':
+            columns = BoulderingGradingSystems;
+            break;
+        default:
+            break;
+    }
+
+    data.discipline = discipline;
+    data.columns = columns;
+
     return (dispatch) => {
-        dispatch(submitUpdateClimbingDiscipline(discipline))
+        dispatch(submitUpdateClimbingDiscipline(data))
     }
 }
 
