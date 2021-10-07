@@ -76,6 +76,8 @@ const refactorArray = (rows) => {
         response[index][item.name] = item.description
         response[index]["level"] = item.level
         response[index]["expertise"] = item.expertisedescription
+
+        return response;
     });
 
     return response;
