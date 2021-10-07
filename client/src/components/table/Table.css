@@ -1,6 +1,9 @@
 .grading-system:hover {
     cursor:help;
 }
+.grading-system {
+    width: 16.6%;
+}
 .novice {
     background-color: #F1EEF6;
 }

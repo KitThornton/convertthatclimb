@@ -15,8 +15,8 @@ class StyleToggleButton extends React.Component {
                         variant={radio.checked ? 'secondary' : 'outline-secondary'}
                         value={radio.value}
                         onChange={(e) => {
-                            this.props.onUpdateClimbingDiscipline(e.currentTarget.value)
-                            this.props.onGetClimbingGrades(e.currentTarget.value)
+                            this.props.onUpdateClimbingDiscipline(e.currentTarget.value);
+                            this.props.onGetClimbingGrades(e.currentTarget.value);
                         }
                         }
                         className="radio"

@@ -26,7 +26,7 @@ export const BoulderingGradingSystems = [{
     dataField: 'v',
     text: 'V Grade'
 }, {
-    dataField: 'britishtechnical',
+    dataField: 'britishtechnicalbouldering',
     text: 'British Technical Grade'
 }
 ];

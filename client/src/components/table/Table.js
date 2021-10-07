@@ -7,24 +7,13 @@ import {Row, Col} from "react-bootstrap";
 import * as repositoryActions from '../../actions/repositoryActions';
 import * as Descriptions from '../modal/GradingSystemsDescriptions'
 import GradingSystemModal from "../modal/Modal";
-import {RouteGradingSystems} from "./Columns";
 import Legend from "../legend/Legend";
 import StyleToggleButton from "../styleToggleButton/StyleToggleButton";
 import './Table.css'
 
-const {SearchBar} = Search;
-
 class Table extends React.Component {
     constructor(props) {
         super(props);
-
-        // this.state = {
-        //     modalShow: false,
-        //     modalTitle: '',
-        //     modalBody: '',
-        //     grades: [],
-        //     discipline: ''
-        // }
 
         this.modalShow = this.modalShow.bind();
         this.modalHide = this.modalHide.bind();
@@ -37,28 +26,8 @@ class Table extends React.Component {
 
     modalShow = (system, title) => {
 
-        // switch case on where the click is originating
         let body;
-
-        switch (system) {
-            case 'french':
-                body = Descriptions.FrenchModalBody
-                break;
-            case 'uiaa':
-                body = Descriptions.UIAAModalBody
-                break;
-            case 'yds':
-                body = Descriptions.YDSModalBody
-                break;
-            case 'britishtrad':
-                body = Descriptions.BritishTradModalBody;
-                break;
-            case 'australian':
-                body = Descriptions.AustralianModalBody;
-                break;
-            default:
-                return;
-        }
+        body = systemToModalDict[system];
 
         this.props.onUpdateModal({
             modalShow: true,
@@ -144,9 +113,20 @@ class Table extends React.Component {
     }
 }
 
+const {SearchBar} = Search;
+
 const rowClasses = (row) => {
     return row.expertise
 }
+
+const systemToModalDict = {
+    uiaa: Descriptions.UIAAModalBody,
+    french: Descriptions.FrenchModalBody,
+    britishtrad: Descriptions.BritishTradModalBody,
+    australian: Descriptions.AustralianModalBody,
+    yds: Descriptions.YDSModalBody,
+    britishtechnical: Descriptions.BritishTechnicalModalBody
+};
 
 const mapStateToProps = (state) => {
     return {
