@@ -120,12 +120,15 @@ const rowClasses = (row) => {
 }
 
 const systemToModalDict = {
-    uiaa: Descriptions.UIAAModalBody,
-    french: Descriptions.FrenchModalBody,
-    britishtrad: Descriptions.BritishTradModalBody,
-    australian: Descriptions.AustralianModalBody,
-    yds: Descriptions.YDSModalBody,
-    britishtechnical: Descriptions.BritishTechnicalModalBody
+    uiaa: Descriptions.UIAA,
+    french: Descriptions.French,
+    britishtrad: Descriptions.BritishTrad,
+    australian: Descriptions.Australian,
+    yds: Descriptions.YDS,
+    britishtechnical: Descriptions.BritishTechnicalTrad,
+    vgrade: Descriptions.VGrade,
+    britishtechnicalbouldering: Descriptions.BritishTechnicalBouldering,
+    font: Descriptions.FontGrade
 };
 
 const mapStateToProps = (state) => {
