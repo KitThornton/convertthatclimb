@@ -49,7 +49,11 @@ class Table extends React.Component {
         const columns = this.props.columns.map(item => ({
                 ...item,
                 headerEvents: {onClick: () => this.modalShow(item.dataField, item.text)},
-                headerClasses: 'grading-system'
+                headerClasses: 'grading-system',
+                events: {
+                    onMouseEnter: (e, column) => console.log(column)
+                // console.log(column);
+                }
             })
         )
 
@@ -57,6 +61,12 @@ class Table extends React.Component {
             {name: 'Route Climbing', value: 'routeClimbing'},
             {name: 'Bouldering', value: 'bouldering'},
         ];
+
+        const rowEvents = {
+            onClick: (e, column, columnIndex) => {
+                console.log(column, columnIndex);
+            }
+        };
 
         return (
             <Fragment>
@@ -97,6 +107,7 @@ class Table extends React.Component {
                                         condensed
                                         rowClasses={rowClasses}
                                         wrapperClasses="table-responsive"
+                                        rowEvents={rowEvents}
                                     />
                                 </div>
                             </div>

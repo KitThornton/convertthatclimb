@@ -13,7 +13,7 @@ function App() {
                     <Col>
                         <img src={logo} className="App-logo" alt="logo"/>
                     </Col>
-                    <Col>
+                    <Col className="App-title">
                         Convert That Climb
                     </Col>
                 </Row>
