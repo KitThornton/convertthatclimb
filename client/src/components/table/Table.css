@@ -3,6 +3,7 @@
 }
 .grading-system {
     width: 16.6%;
+    text-align: center;
 }
 .novice {
     background-color: #F1EEF6;
@@ -23,6 +24,6 @@
     background-color: #845A9E;
 }
 .search-label{
-    width: 250px;
+    /*width: 250px;*/
     float: left;
 }

@@ -3,29 +3,36 @@ import {ToggleButton, ToggleButtonGroup} from "react-bootstrap";
 import './StyleToggleButton.css'
 import * as repositoryActions from "../../actions/repositoryActions";
 import {connect} from "react-redux";
+import {Container, Row, Col} from 'react-bootstrap'
 
 class StyleToggleButton extends React.Component {
     render() {
         return (
-            <ToggleButtonGroup type="radio" name="radio" defaultValue={this.props.defaultValue}>
-                {this.props.radios.map((radio) => (
-                    <ToggleButton
-                        key={`radio-${radio.name}`}
-                        id={`radio-${radio.name}`}
-                        variant={radio.checked ? 'secondary' : 'outline-secondary'}
-                        value={radio.value}
-                        onChange={(e) => {
-                            this.props.onUpdateClimbingDiscipline(e.currentTarget.value);
-                            this.props.onGetClimbingGrades(e.currentTarget.value);
-                        }
-                        }
-                        className="radio"
-                    >
-                        {radio.name}
-                         {/*<span style={{display: 'inline-block', width: '12px'}}/>*!/*/}
-                    </ToggleButton>
-                ))}
-            </ToggleButtonGroup>
+            <div>
+                <Row>
+                    <ToggleButtonGroup className="toggle-btn-group" type="radio" name="radio" defaultValue={this.props.defaultValue}>
+                        {this.props.radios.map((radio) => (
+                            // <Col xs={6} md={6}>
+                                <ToggleButton
+                                    key={`radio-${radio.name}`}
+                                    id={`radio-${radio.name}`}
+                                    variant={radio.checked ? 'secondary' : 'outline-secondary'}
+                                    value={radio.value}
+                                    onChange={(e) => {
+                                        this.props.onUpdateClimbingDiscipline(e.currentTarget.value);
+                                        this.props.onGetClimbingGrades(e.currentTarget.value);
+                                    }
+                                    }
+                                    className="radio"
+                                >
+                                    {radio.name}
+                                     {/*<span style={{display: 'inline-block', width: '12px'}}/>*!/*/}
+                                </ToggleButton>
+                            // </Col>
+                        ))}
+                    </ToggleButtonGroup>
+                </Row>
+            </div>
         )
     }
 }

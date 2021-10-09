@@ -70,21 +70,22 @@ class Table extends React.Component {
                         props => (
                             <div>
                                 <Row>
-                                    <Col xs={12} md={3}>
+                                    <Col xs={12} md={3} className="px-2 py-1">
                                         <SearchBar
                                             {...props.searchProps}
                                             srText=""
                                             placeholder={"Search for a grade..."}
                                             delay={100}
+                                            // style={{ padding: '5px', width: '200px' }}
                                         />
                                     </Col>
-                                    <Col xs={12} md={4}>
+                                    <Col xs={12} md={4} className="px-2 py-1">
                                         <StyleToggleButton
                                             radios={radios}
                                             defaultValue={"routeClimbing"}
                                         />
                                     </Col>
-                                    <Col xs={12} md={5}>
+                                    <Col xs={12} md={5} className="px-2 py-1">
                                         <Legend/>
                                     </Col>
                                 </Row>
@@ -95,6 +96,7 @@ class Table extends React.Component {
                                         striped
                                         condensed
                                         rowClasses={rowClasses}
+                                        wrapperClasses="table-responsive"
                                     />
                                 </div>
                             </div>
