@@ -3,7 +3,7 @@ import {ToggleButton, ToggleButtonGroup} from "react-bootstrap";
 import './StyleToggleButton.css'
 import * as repositoryActions from "../../actions/repositoryActions";
 import {connect} from "react-redux";
-import {Container, Row, Col} from 'react-bootstrap'
+import {Row} from 'react-bootstrap'
 
 class StyleToggleButton extends React.Component {
     render() {
