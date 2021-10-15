@@ -50,10 +50,10 @@ class Table extends React.Component {
                 ...item,
                 headerEvents: {onClick: () => this.modalShow(item.dataField, item.text)},
                 headerClasses: 'grading-system',
-                events: {
-                    onMouseEnter: (e, column, columnIndex, row, rowIndex) => console.log(e.target.innerHTML)
-                // console.log(column);
-                }
+                // events: {
+                //     onMouseEnter: (e, column, columnIndex, row, rowIndex) => console.log(e.target.innerHTML)
+                // // console.log(column);
+                // }
             })
         )
 
@@ -62,11 +62,13 @@ class Table extends React.Component {
             {name: 'Bouldering', value: 'bouldering'},
         ];
 
-        // const rowEvents = {
-        //     onClick: (e, column, columnIndex) => {
-        //         console.log(column, columnIndex);
-        //     }
-        // };
+        const rowEvents = {
+            onClick: (e, row, rowIndex, column, columnIndex, ) => {
+
+                // e.target.header
+                console.log(e, e.target.innerHTML);
+            }
+        };
 
         return (
             <Fragment>
@@ -107,7 +109,7 @@ class Table extends React.Component {
                                         condensed
                                         rowClasses={rowClasses}
                                         wrapperClasses="table-responsive"
-                                        // rowEvents={rowEvents}
+                                        rowEvents={rowEvents}
                                     />
                                 </div>
                             </div>
