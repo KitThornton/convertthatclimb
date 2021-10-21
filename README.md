@@ -13,7 +13,7 @@ The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
 ### `npm run build`
-Create an optimised build folder. Used by Netlify.
+Create an optimised build folder. Used by Netlify!
 
 
 ### `npm test`
