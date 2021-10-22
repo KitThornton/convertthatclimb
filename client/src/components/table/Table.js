@@ -26,7 +26,7 @@ class Table extends React.Component {
     }
 
     showFullAdjectivalGrade(grade) {
-        const fullDescription = grade ? adjectivalGradeDict[grade.toLowerCase()] : null;
+        const fullDescription = grade ? adjectivalGradeDict[grade] : null;
         // return fullDescription ? fullDescription : '';
         return fullDescription;
     }
@@ -174,10 +174,20 @@ const systemToModalDict = {
 };
 
 const adjectivalGradeDict = {
-    mod: "Moderate",
-    moderate: "Moderate 2",
-    Moderate: "Moderate 2",
-    vd: "Very Difficult"
+    Mod: "Moderate",
+    Diff: "Difficult",
+    VD: "Very Difficult",
+    HVD: "Hard Very Difficult",
+    S: "Severe",
+    HS: "Hard Severe",
+    VS: "Very Severe",
+    HVS: "Hard Very Severe",
+    E1: "Extremely Severe 1",
+    E2: "Extremely Severe 2",
+    E3: "Extremely Severe 3",
+    E4: "Extremely Severe 4",
+    E5: "Extremely Severe 5",
+    E6: "Extremely Severe 6",
 }
 
 const mapStateToProps = (state) => {
