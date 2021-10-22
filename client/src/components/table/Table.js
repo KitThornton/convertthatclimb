@@ -2,7 +2,7 @@ import React, {Fragment} from 'react';
 import BootstrapTable from 'react-bootstrap-table-next';
 import ToolkitProvider, {Search} from 'react-bootstrap-table2-toolkit';
 import {connect} from "react-redux";
-import {Row, Col} from "react-bootstrap";
+import {Row, Col, Tooltip, OverlayTrigger} from "react-bootstrap";
 
 import * as repositoryActions from '../../actions/repositoryActions';
 import * as Descriptions from '../modal/GradingSystemsDescriptions'
@@ -17,11 +17,18 @@ class Table extends React.Component {
 
         this.modalShow = this.modalShow.bind();
         this.modalHide = this.modalHide.bind();
+        this.showFullAdjectivalGrade = this.showFullAdjectivalGrade.bind();
     }
 
     componentDidMount() {
         this.props.onUpdateClimbingDiscipline('routeClimbing')
         this.props.onGetClimbingGrades(this.props.discipline);
+    }
+
+    showFullAdjectivalGrade(grade) {
+        const fullDescription = grade ? adjectivalGradeDict[grade.toLowerCase()] : null;
+        // return fullDescription ? fullDescription : '';
+        return fullDescription;
     }
 
     modalShow = (system, title) => {
@@ -44,31 +51,52 @@ class Table extends React.Component {
         });
     }
 
+    renderTooltip(cell, props) {
+        return (
+            <Tooltip id="button-tooltip" {...props}>
+                {this.showFullAdjectivalGrade(cell)}
+            </Tooltip>
+        )
+    }
+
+    fullGradeName = (cell) => {
+
+        const exist = (cell in adjectivalGradeDict);
+
+        if (!exist) {
+            return (
+                <span>
+                    {cell}
+                </span>
+            )
+        }
+
+        return (
+            <OverlayTrigger
+                placement="right"
+                delay={{ show: 250, hide: 400 }}
+                overlay={this.renderTooltip(cell, this.props)}
+                grade={cell}
+            >
+                <span>{cell}</span>
+            </OverlayTrigger>
+        );
+    };
+
     render() {
 
         const columns = this.props.columns.map(item => ({
                 ...item,
                 headerEvents: {onClick: () => this.modalShow(item.dataField, item.text)},
                 headerClasses: 'grading-system',
-                // events: {
-                //     onMouseEnter: (e, column, columnIndex, row, rowIndex) => console.log(e.target.innerHTML)
-                // // console.log(column);
-                // }
+                formatter: this.fullGradeName
             })
-        )
+        );
 
         const radios = [
             {name: 'Route Climbing', value: 'routeClimbing'},
             {name: 'Bouldering', value: 'bouldering'},
         ];
-
-        const rowEvents = {
-            onClick: (e, row, rowIndex, column, columnIndex, ) => {
-
-                // e.target.header
-                console.log(e, e.target.innerHTML);
-            }
-        };
 
         return (
             <Fragment>
@@ -109,7 +137,6 @@ class Table extends React.Component {
                                         condensed
                                         rowClasses={rowClasses}
                                         wrapperClasses="table-responsive"
-                                        rowEvents={rowEvents}
                                     />
                                 </div>
                             </div>
@@ -145,6 +172,13 @@ const systemToModalDict = {
     britishtechnicalbouldering: Descriptions.BritishTechnicalBouldering,
     font: Descriptions.FontGrade
 };
+
+const adjectivalGradeDict = {
+    mod: "Moderate",
+    moderate: "Moderate 2",
+    Moderate: "Moderate 2",
+    vd: "Very Difficult"
+}
 
 const mapStateToProps = (state) => {
     return {
