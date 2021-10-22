@@ -69,18 +69,18 @@ class Table extends React.Component {
                     {cell}
                 </span>
             )
+        } else {
+            return (
+                <OverlayTrigger
+                    placement="right"
+                    delay={{ show: 250, hide: 400 }}
+                    overlay={this.renderTooltip(cell, this.props)}
+                    grade={cell}
+                >
+                    <span>{cell}</span>
+                </OverlayTrigger>
+            )
         }
-
-        return (
-            <OverlayTrigger
-                placement="right"
-                delay={{ show: 250, hide: 400 }}
-                overlay={this.renderTooltip(cell, this.props)}
-                grade={cell}
-            >
-                <span>{cell}</span>
-            </OverlayTrigger>
-        );
     };
 
     render() {
