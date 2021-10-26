@@ -24,6 +24,8 @@
     background-color: #845A9E;
 }
 .search-label{
-    /*width: 250px;*/
     float: left;
+}
+.british-trad {
+    cursor: help;
 }

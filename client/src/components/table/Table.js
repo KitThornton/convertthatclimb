@@ -7,7 +7,7 @@ import {Row, Col, Tooltip, OverlayTrigger} from "react-bootstrap";
 import * as repositoryActions from '../../actions/repositoryActions';
 import * as Descriptions from '../modal/GradingSystemsDescriptions'
 import GradingSystemModal from "../modal/Modal";
-import Legend from "../legend/Legend";
+import {RouteClimbingLegend} from "../legend/Legend";
 import StyleToggleButton from "../styleToggleButton/StyleToggleButton";
 import './Table.css'
 
@@ -77,7 +77,7 @@ class Table extends React.Component {
                     overlay={this.renderTooltip(cell, this.props)}
                     grade={cell}
                 >
-                    <span>{cell}</span>
+                    <span className="british-trad">{cell}</span>
                 </OverlayTrigger>
             )
         }
@@ -126,7 +126,7 @@ class Table extends React.Component {
                                         />
                                     </Col>
                                     <Col xs={12} md={5} className="px-2 py-1">
-                                        <Legend/>
+                                        <RouteClimbingLegend />
                                     </Col>
                                 </Row>
                                 <div className="p-1">

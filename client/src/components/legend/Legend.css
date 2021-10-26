@@ -11,7 +11,7 @@
 .my-legend .legend-scale ul li {
     display: block;
     float: left;
-    width: 70px;
+    width: 80px;
     /*margin-bottom: 2px;*/
     text-align: center;
     font-size: 80%;
@@ -21,7 +21,7 @@
     display: block;
     float: left;
     height: 15px;
-    width: 70px;
+    width: 80px;
 }
 .my-legend .legend-source {
     font-size: 70%;

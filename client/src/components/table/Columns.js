@@ -9,7 +9,8 @@ export const RouteGradingSystems = [{
     text: 'Yosemite Decimal System'
 }, {
     dataField: 'britishtrad',
-    text: 'British Trad'
+    text: 'British Trad',
+    // classes: 'british-trad'
 }, {
     dataField: 'britishtechnical',
     text: 'British Technical'
