@@ -1,7 +1,6 @@
 import React from 'react';
 import { Modal,  Button } from 'react-bootstrap';
 import './Modal.css'
-import * as Descriptions from "./GradingSystemsDescriptions";
 
 export default function GradingSystemModal(props) {
 
@@ -24,8 +23,6 @@ export default function GradingSystemModal(props) {
                 </p>
                 <Button variant="secondary" onClick={props.onHide}>Close</Button>
             </Modal.Body>
-            {/*<Modal.Footer>*/}
-            {/*</Modal.Footer>*/}
         </Modal>
     )
 }
