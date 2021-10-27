@@ -1,5 +1,7 @@
 import * as ActionTypes from './actionTypes'
 import {BoulderingGradingSystems, RouteGradingSystems} from "../components/table/Columns";
+import {trackPromise} from "react-promise-tracker";
+
 const baseUrl = 'https://convertthatclimb.herokuapp.com/';
 
 const submitGetClimbingGradesSuccess = (data) => {
@@ -27,16 +29,18 @@ export const getClimbingGrades = (discipline) => {
 
     return (dispatch) => {
 
-        fetch(baseUrl + 'grades/' + discipline)
-            .then(res => res.json())
-            .then(
-                (result) => {
-                    const restructuredArray = refactorArray(result.rows);
-                    dispatch(submitGetClimbingGradesSuccess(restructuredArray));
-                },
-                (error) => {
-                    console.log(error);
-                });
+        trackPromise(
+            fetch(baseUrl + 'grades/' + discipline)
+                .then(res => res.json())
+                .then(
+                    (result) => {
+                        const restructuredArray = refactorArray(result.rows);
+                        dispatch(submitGetClimbingGradesSuccess(restructuredArray));
+                    },
+                    (error) => {
+                        console.log(error);
+                    })
+                )
     }
 }
 
@@ -65,6 +69,7 @@ export const updateClimbingDiscipline = (discipline) => {
 
     data.discipline = discipline;
     data.columns = columns;
+    data.grades = [{}];
 
     return (dispatch) => {
         dispatch(submitUpdateClimbingDiscipline(data))
@@ -90,6 +95,7 @@ const refactorArray = (rows) => {
         }
 
         response[index][item.name] = item.description
+        response[index]["key"] = item.climbinggradeid
         response[index]["level"] = item.level
         response[index]["expertise"] = item.expertisedescription
 

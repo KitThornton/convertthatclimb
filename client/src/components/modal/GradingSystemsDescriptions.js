@@ -27,3 +27,34 @@ export const VGrade = ""
 export const FontGrade = ""
 
 export const BritishTechnicalBouldering = ""
+
+
+export const systemToModalDict = {
+    uiaa: UIAA,
+    french: French,
+    britishtrad: BritishTrad,
+    australian: Australian,
+    yds: YDS,
+    britishtechnical: BritishTechnicalTrad,
+    vgrade: VGrade,
+    britishtechnicalbouldering: BritishTechnicalBouldering,
+    font: FontGrade
+};
+
+
+export const adjectivalGradeDict = {
+    Mod: "Moderate",
+    Diff: "Difficult",
+    VD: "Very Difficult",
+    HVD: "Hard Very Difficult",
+    S: "Severe",
+    HS: "Hard Severe",
+    VS: "Very Severe",
+    HVS: "Hard Very Severe",
+    E1: "Extremely Severe 1",
+    E2: "Extremely Severe 2",
+    E3: "Extremely Severe 3",
+    E4: "Extremely Severe 4",
+    E5: "Extremely Severe 5",
+    E6: "Extremely Severe 6",
+}

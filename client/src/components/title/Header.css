@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Signika+Negative&display=swap');
+.App-header {
+    display: flex;
+    font-family: "Signika Negative", sans-serif;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+}
+.App-title {
+    /*position: absolute;*/
+    font-size: calc(60px + 2vmin);
+    padding-top: 7%;
+}
+.App-logo {
+    height: 40vmin;
+    pointer-events: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+        animation: App-logo-float infinite 3s ease-in-out;
+    }
+}
+
+@keyframes App-logo-float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}

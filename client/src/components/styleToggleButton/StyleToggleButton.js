@@ -12,7 +12,6 @@ class StyleToggleButton extends React.Component {
                 <Row>
                     <ToggleButtonGroup className="toggle-btn-group" type="radio" name="radio" defaultValue={this.props.defaultValue}>
                         {this.props.radios.map((radio) => (
-                            // <Col xs={6} md={6}>
                                 <ToggleButton
                                     key={`radio-${radio.name}`}
                                     id={`radio-${radio.name}`}
@@ -26,9 +25,7 @@ class StyleToggleButton extends React.Component {
                                     className="radio"
                                 >
                                     {radio.name}
-                                     {/*<span style={{display: 'inline-block', width: '12px'}}/>*!/*/}
                                 </ToggleButton>
-                            // </Col>
                         ))}
                     </ToggleButtonGroup>
                 </Row>

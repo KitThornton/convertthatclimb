@@ -29,7 +29,8 @@ const executeUpdateDiscipline = (state, action) => {
     return {
         ...state,
         discipline: action.data.discipline,
-        columns: action.data.columns
+        columns: action.data.columns,
+        grades: action.data.grades
     }
 }
 

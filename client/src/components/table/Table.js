@@ -2,13 +2,14 @@ import React, {Fragment} from 'react';
 import BootstrapTable from 'react-bootstrap-table-next';
 import ToolkitProvider, {Search} from 'react-bootstrap-table2-toolkit';
 import {connect} from "react-redux";
-import {Row, Col, Tooltip, OverlayTrigger} from "react-bootstrap";
+import {Col, OverlayTrigger, Row, Tooltip} from "react-bootstrap";
 
 import * as repositoryActions from '../../actions/repositoryActions';
-import * as Descriptions from '../modal/GradingSystemsDescriptions'
 import GradingSystemModal from "../modal/Modal";
 import {RouteClimbingLegend} from "../legend/Legend";
 import StyleToggleButton from "../styleToggleButton/StyleToggleButton";
+import {LoadingIndicator} from '../loadingIndicator/LoadingIndicator'
+import {adjectivalGradeDict, systemToModalDict} from '../modal/GradingSystemsDescriptions'
 import './Table.css'
 
 class Table extends React.Component {
@@ -26,9 +27,7 @@ class Table extends React.Component {
     }
 
     showFullAdjectivalGrade(grade) {
-        const fullDescription = grade ? adjectivalGradeDict[grade] : null;
-        // return fullDescription ? fullDescription : '';
-        return fullDescription;
+        return grade ? adjectivalGradeDict[grade] : null;
     }
 
     modalShow = (system, title) => {
@@ -94,14 +93,14 @@ class Table extends React.Component {
         );
 
         const radios = [
-            {name: 'Route Climbing', value: 'routeClimbing'},
-            {name: 'Bouldering', value: 'bouldering'},
+            {key: 'routeClimbing' ,name: 'Route Climbing', value: 'routeClimbing'},
+            {key:  'Bouldering', name: 'Bouldering', value: 'bouldering'},
         ];
 
         return (
             <Fragment>
                 <ToolkitProvider
-                    keyField="level"
+                    keyField="key"
                     data={this.props.grades}
                     columns={columns}
                     search
@@ -116,7 +115,6 @@ class Table extends React.Component {
                                             srText=""
                                             placeholder={"Search for a grade..."}
                                             delay={100}
-                                            // style={{ padding: '5px', width: '200px' }}
                                         />
                                     </Col>
                                     <Col xs={12} md={4} className="px-2 py-1">
@@ -150,6 +148,8 @@ class Table extends React.Component {
                     title={this.props.modalTitle}
                     body={this.props.modalBody}
                 />
+
+                <LoadingIndicator />
             </Fragment>
         )
     }
@@ -159,35 +159,6 @@ const {SearchBar} = Search;
 
 const rowClasses = (row) => {
     return row.expertise
-}
-
-const systemToModalDict = {
-    uiaa: Descriptions.UIAA,
-    french: Descriptions.French,
-    britishtrad: Descriptions.BritishTrad,
-    australian: Descriptions.Australian,
-    yds: Descriptions.YDS,
-    britishtechnical: Descriptions.BritishTechnicalTrad,
-    vgrade: Descriptions.VGrade,
-    britishtechnicalbouldering: Descriptions.BritishTechnicalBouldering,
-    font: Descriptions.FontGrade
-};
-
-const adjectivalGradeDict = {
-    Mod: "Moderate",
-    Diff: "Difficult",
-    VD: "Very Difficult",
-    HVD: "Hard Very Difficult",
-    S: "Severe",
-    HS: "Hard Severe",
-    VS: "Very Severe",
-    HVS: "Hard Very Severe",
-    E1: "Extremely Severe 1",
-    E2: "Extremely Severe 2",
-    E3: "Extremely Severe 3",
-    E4: "Extremely Severe 4",
-    E5: "Extremely Severe 5",
-    E6: "Extremely Severe 6",
 }
 
 const mapStateToProps = (state) => {

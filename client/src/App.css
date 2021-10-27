@@ -1,49 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Signika+Negative&display=swap');
-
 .App {
   text-align: center;
   /*font-family: "American Typewriter";*/
   font-family: 'Signika Negative', sans-serif;
   font-size: calc(60px + 2vmin);
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  /*display: flex;*/
-  /*flex-direction: column;*/
-  align-items: baseline;
-  /*text-align: center;*/
-  justify-content: center;
-  font-size: calc(60px + 2vmin);
-  /*padding: 4px;*/
-}
-.App-title {
-  vertical-align: middle;
-}
-
 .App-body {
   font-family: "American Typewriter", sans-serif;
-  /* something here to align items in the row ? s*/
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-float infinite 3s ease-in-out;
-  }
-}
-
-@keyframes App-logo-float {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(10px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
 }
