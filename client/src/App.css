@@ -3,7 +3,12 @@
   /*font-family: "American Typewriter";*/
   font-family: 'Signika Negative', sans-serif;
   font-size: calc(60px + 2vmin);
+  min-height: 700px;
 }
 .App-body {
   font-family: "American Typewriter", sans-serif;
+}
+body {
+  min-height: 800px;
+  height: 100%;
 }

@@ -127,7 +127,7 @@ class Table extends React.Component {
                                         <RouteClimbingLegend />
                                     </Col>
                                 </Row>
-                                <div className="p-1">
+                                <div className="py-1">
                                     <BootstrapTable
                                         {...props.baseProps}
                                         hover

@@ -1,0 +1,23 @@
+.Footer {
+    position: relative;
+    padding: 3px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    font-size: x-large;
+    justify-content: center;
+    text-align: center;
+    font-family: "Avenir Next", serif;
+    background-image: radial-gradient(circle, grey 60%, white);
+}
+.upper {
+    background-color: #8c8c8c;
+}
+.lower {
+    /*background-color: #666666;*/
+    /*background-image: linear-gradient(to right, white, dimgrey);*/
+
+}
+a, a:visited, a:hover, a:active {
+    color: inherit;
+}
